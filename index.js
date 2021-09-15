@@ -12,4 +12,7 @@ function hide () {
 function hideself(){
   this.hidden = true;
 }
-document.getElementById('elemn').addEventListener("click",hideself)
+document.getElementById('elemn').addEventListener("click",hideself
+
+//which hendler?
+//the answer is line 1 and line 5
