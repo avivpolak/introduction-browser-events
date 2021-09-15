@@ -100,6 +100,8 @@ function pop(e) {
 
 
 
+//emoji scroll 
+
 
 /* label the images, just for convenience, to visually track them */
 let i = 1;
