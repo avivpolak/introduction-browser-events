@@ -89,7 +89,7 @@ for (let i = 0; i < 5; i++) {
 outerdiv.addEventListener("click", pop);
 function pop(e) {
     const element = e.target;
-    if (element.id / 1) element.parentElement.classList.toggle("hide");
+    if (element.id) element.parentElement.classList.toggle("hide");
 }
 
 
