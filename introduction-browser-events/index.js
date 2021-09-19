@@ -192,3 +192,189 @@ function createElement(tagname, children = [], classes = [], attributes) {
 
     return el;
 }
+
+
+let tree=document.getElementById("hideTree")
+tree.addEventListener("click",handleHide)
+
+
+function hideChilds(parentElement){
+    console.log(parentElement)
+    for (let child of parentElement.children){
+        child.classList.toggle("hide")
+    }
+}
+function handleHide(e){
+    hideChilds(e.target)
+}
+
+let grid=document.getElementById("grid")
+grid.onclick = function(e) {
+    if (e.target.tagName != 'TH') return;
+
+    let th = e.target;
+    // if TH, then sort
+    // cellIndex is the number of th:
+    //   0 for the first column
+    //   1 for the second column, etc
+    sortGrid(th.cellIndex, th.dataset.type);
+  };
+
+  function sortGrid(colNum, type) {
+    let tbody = grid.querySelector('tbody');
+
+    let rowsArray = Array.from(tbody.rows);
+
+    // compare(a, b) compares two rows, need for sorting
+    let compare;
+
+    switch (type) {
+      case 'number':
+        compare = function(rowA, rowB) {
+          return rowA.cells[colNum].innerHTML - rowB.cells[colNum].innerHTML;
+        };
+        break;
+      case 'string':
+        compare = function(rowA, rowB) {
+          return rowA.cells[colNum].innerHTML > rowB.cells[colNum].innerHTML ? 1 : -1;
+        };
+        break;
+    }
+
+    // sort
+    rowsArray.sort(compare);
+
+    tbody.append(...rowsArray);
+  }
+  let tooltipElem;
+
+  document.onmouseover = function(event) {
+    let target = event.target;
+
+    // if we have tooltip HTML...
+    let tooltipHtml = target.dataset.tooltip;
+    if (!tooltipHtml) return;
+
+    // ...create the tooltip element
+
+    tooltipElem = document.createElement('div');
+    tooltipElem.className = 'tooltip';
+    tooltipElem.innerHTML = tooltipHtml;
+    document.body.append(tooltipElem);
+
+    // position it above the annotated element (top-center)
+    let coords = target.getBoundingClientRect();
+
+    let left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
+    if (left < 0) left = 0; // don't cross the left window edge
+
+    let top = coords.top - tooltipElem.offsetHeight - 5;
+    if (top < 0) { // if crossing the top window edge, show below instead
+      top = coords.top + target.offsetHeight + 5;
+    }
+
+    tooltipElem.style.left = left + 'px';
+    tooltipElem.style.top = top + 'px';
+  };
+
+  document.onmouseout = function(e) {
+
+    if (tooltipElem) {
+      tooltipElem.remove();
+      tooltipElem = null;
+    }
+
+  };
+
+
+
+
+
+
+    document.onmouseover = function(event) {
+      let target = event.target;
+
+      // if we have tooltip HTML...
+      let tooltipHtml = target.dataset.tooltip;
+      if (!tooltipHtml) return;
+
+      // ...create the tooltip element
+
+      tooltipElem = document.createElement('div');
+      tooltipElem.className = 'tooltip';
+      tooltipElem.innerHTML = tooltipHtml;
+      document.body.append(tooltipElem);
+
+      // position it above the annotated element (top-center)
+      let coords = target.getBoundingClientRect();
+
+      let left = coords.left + (target.offsetWidth - tooltipElem.offsetWidth) / 2;
+      if (left < 0) left = 0; // don't cross the left window edge
+
+      let top = coords.top - tooltipElem.offsetHeight - 5;
+      if (top < 0) { // if crossing the top window edge, show below instead
+        top = coords.top + target.offsetHeight + 5;
+      }
+
+      tooltipElem.style.left = left + 'px';
+      tooltipElem.style.top = top + 'px';
+    };
+
+    document.onmouseout = function(e) {
+
+      if (tooltipElem) {
+        tooltipElem.remove();
+        tooltipElem = null;
+      }
+
+    };
+  
+
+
+
+
+    //default-browser-action
+
+    //1. because the broser need to get "return 'function name()" on "onclick" attibute
+
+    contents.onclick = function(event) {
+
+        function handleLink(href) {
+          let isLeaving = confirm(`Leave for ${href}?`);
+          if (!isLeaving) return false;
+        }
+  
+        let target = event.target.closest('a');
+  
+        if (target && contents.contains(target)) {
+          return handleLink(target.getAttribute('href'));
+        }
+      }
+
+
+
+      thumbs.onclick = function(event) {
+        let thumbnail = event.target.closest('a');
+  
+        if (!thumbnail) return;
+        showThumbnail(thumbnail.href, thumbnail.title);
+        event.preventDefault();
+      }
+  
+      function showThumbnail(href, title) {
+        largeImg.src = href;
+        largeImg.alt = title;
+      }
+
+
+
+let ulop = document.getElementById("ulop")
+ulop.addEventListener("click",handleMakeItGreen)
+
+
+function handleMakeItGreen(e){
+e.target.classList.add("green")
+if (e.ctrlKey){
+     e.target.classList.add("normal")
+}}
+
