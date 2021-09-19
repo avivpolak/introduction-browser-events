@@ -141,3 +141,65 @@ body {
   .gallery li {
     display: inline-block;
   }
+  .slider {
+    border-radius: 5px;
+    background: #E0E0E0;
+    background: linear-gradient(left top, #E0E0E0, #EEEEEE);
+    width: 310px;
+    height: 15px;
+    margin: 5px;
+  }
+  
+  .thumb {
+    width: 10px;
+    height: 25px;
+    border-radius: 3px;
+    position: relative;
+    left: 10px;
+    top: -5px;
+    background: blue;
+    cursor: pointer;
+  }
+  #fieldHero {
+    background: url(field.svg);
+    width: 800px;
+    height: 500px;
+    float: left;
+  }
+  
+  /* heroes and the ball (dragables) */
+  
+  .hero {
+    background: url(https://js.cx/drag-heroes/heroes.png);
+    width: 130px;
+    height: 128px;
+    float: left;
+  }
+  
+  #hero1 {
+    background-position: 0 0;
+  }
+  
+  #hero2 {
+    background-position: 0 -128px;
+  }
+  
+  #hero3 {
+    background-position: -120px 0;
+  }
+  
+  #hero4 {
+    background-position: -125px -128px;
+  }
+  
+  #hero5 {
+    background-position: -248px -128px;
+  }
+  
+  #hero6 {
+    background-position: -244px 0;
+  }
+  
+  .draggable {
+    cursor: pointer;
+  }
